@@ -29,9 +29,29 @@ layout: default
         {{ content }}
       </div>
       <div class="col-lg-4">
-        <h2 class="section-heading">Sidebar Home</h2>
+        <h2 class="section-heading mainSidebar">Sidebar Home</h2>
+        <h2 class="section-heading bottomPanel">Bottom Panel Home</h2>
+
         {% include sidebar.html %}
       </div>
+    
     </div>
   </div>
 </div>
+
+<script>
+  function updateContent() {
+  const mainSidebar = document.querySelector('.mainSidebar');
+  const bottomPanel = document.querySelector('.bottomPanel');
+
+  if (window.innerWidth < 992) {
+    mainSidebar.style.display = 'none';
+    bottomPanel.style.display = 'block';
+  } else {
+    mainSidebar.style.display = 'block';
+    bottomPanel.style.display = 'none';
+  }
+}
+window.addEventListener('load', updateContent);
+window.addEventListener('resize', updateContent);
+</script>
